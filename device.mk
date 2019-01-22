@@ -456,6 +456,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
 
+# Touch
+PRODUCT_PACKAGES += \
+    vendor.lineage.touch@1.0-service.asus_sdm660
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.asus_sdm660
