@@ -4,9 +4,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Inherit the proprietary files
-$(call inherit-product, vendor/asus/X00T/X00T-vendor.mk)
-
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
@@ -503,3 +500,14 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+# ZenParts
+PRODUCT_PACKAGES += \
+    init.spectrum.rc \
+    init.spectrum.sh \
+    init.zenparts.rc \
+    init.zenparts.sh \
+    ZenParts
+
+# Inherit the proprietary files
+$(call inherit-product, vendor/asus/X00T/X00T-vendor.mk)
