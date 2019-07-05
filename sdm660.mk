@@ -408,7 +408,8 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
     init.target.rc \
-    ueventd.qcom.rc
+    ueventd.qcom.rc \
+    init.zenparts.rc
 
 # Seccomp
 PRODUCT_COPY_FILES += \
@@ -490,3 +491,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+# ZenParts
+PRODUCT_PACKAGES += \
+    ZenParts
