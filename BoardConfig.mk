@@ -175,8 +175,8 @@ ENABLE_VENDOR_RIL_SERVICE := true
 
 # Sepolicy
 include device/qcom/sepolicy-legacy-um/sepolicy.mk
-
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
 
 # Treble
 BOARD_VNDK_VERSION := current
