@@ -428,6 +428,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
+# Sqlite
+PRODUCT_PACKAGES += \
+    sqlite3
+
 # Telephony
 PRODUCT_PACKAGES += \
     ims-ext-common \
