@@ -440,6 +440,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     sqlite3
 
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    Settings \
+    SystemUI
+
 # Telephony
 PRODUCT_PACKAGES += \
     ims-ext-common \
