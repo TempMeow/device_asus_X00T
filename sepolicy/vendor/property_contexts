@@ -4,6 +4,11 @@ persist.vendor.camera.pickres.prop_hdr        u:object_r:vendor_camera_prop:s0
 
 # Dirac
 persist.audio.dirac                           u:object_r:dirac_prop:s0
+persist.dirac.acs.controller                  u:object_r:vendor_audio_prop:s0
+persist.dirac.acs.storeSettings               u:object_r:vendor_audio_prop:s0
+persist.dirac.acs.ignore_error                u:object_r:vendor_audio_prop:s0
+ro.audio.soundfx.dirac                        u:object_r:vendor_audio_prop:s0
+persist.audio.dirac.speaker                   u:object_r:vendor_audio_prop:s0
 
 # Fingerprint
 property.cdfinger.enablesave                  u:object_r:vendor_fingerprint_prop:s0
