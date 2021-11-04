@@ -3,3 +3,5 @@ dontaudit init firmware_file:filesystem getattr;
 
 # Dirac
 set_prop(vendor_init, dirac_prop)
+set_prop(vendor_init, vendor_audio_prop)
+allow vendor_init dirac_prop:property_service set;
