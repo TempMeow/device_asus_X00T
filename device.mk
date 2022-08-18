@@ -515,7 +515,8 @@ PRODUCT_PACKAGES += \
     init.spectrum.sh \
     init.zenparts.rc \
     init.zenparts.sh \
-    ZenParts
+    ZenParts \
+    XiaomiDirac
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/asus/X00T/X00T-vendor.mk)
