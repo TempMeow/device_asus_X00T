@@ -7,6 +7,10 @@
 
 set -e
 
+# Required
+DEVICE=X00T
+VENDOR=asus
+
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
@@ -52,6 +56,21 @@ fi
 function blob_fixup() {
     case "${1}" in
 
+    # Fix jar path
+    product/etc/permissions/qti_fingerprint_interface.xml)
+        sed -i 's|/system/framework/|/system/product/framework/|g' "${2}"
+        ;;
+
+    # Rename to fp service avoid conflicts
+    vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service_asus.rc)
+        sed -i 's|android.hardware.biometrics.fingerprint@2.1-service|android.hardware.biometrics.fingerprint@2.1-service_asus|g' "${2}"
+        ;;
+
+    # remove android.hidl.base dependency
+    vendor/lib/hw/camera.sdm660.so)
+        patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
+        ;;
+
     # remove android.hidl.base dependency
     lib64/libfm-hci.so | lib64/libwfdnative.so | lib/libfm-hci.so | lib/libwfdnative.so)
         patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
@@ -60,19 +79,9 @@ function blob_fixup() {
     esac
 }
 
-# Initialize the helper for common device
-setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${LINEAGE_ROOT}" true "${CLEAN_VENDOR}"
+# Initialize the helper for device
+setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
 
-extract "${MY_DIR}/proprietary-files.txt" "${SRC}" \
-        "${KANG}" --section "${SECTION}"
-
-if [ -s "${MY_DIR}/../${DEVICE}/proprietary-files.txt" ]; then
-    # Reinitialize the helper for device
-    source "${MY_DIR}/../${DEVICE}/extract-files.sh"
-    setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
-
-    extract "${MY_DIR}/../${DEVICE}/proprietary-files.txt" "${SRC}" \
-            "${KANG}" --section "${SECTION}"
-fi
+extract "${MY_DIR}/proprietary-files.txt" "${SRC}" ${KANG} --section "${SECTION}"
 
 "${MY_DIR}/setup-makefiles.sh"

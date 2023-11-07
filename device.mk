@@ -5,13 +5,17 @@
 #
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/asus/sdm660-common/sdm660-common-vendor.mk)
+$(call inherit-product, vendor/asus/X00T/X00T-vendor.mk)
 
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Default is nosdcard, S/W button enabled in resource
 PRODUCT_CHARACTERISTICS := nosdcard
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2160
+TARGET_SCREEN_WIDTH := 1080
 
 # AID/fs configs
 PRODUCT_PACKAGES += \
@@ -303,8 +307,8 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-lineage/lineage-sdk \
-    $(LOCAL_PATH)/overlay-lineage/packages/apps/Snap \
+    $(LOCAL_PATH)/overlay-qassa/lineage-sdk \
+    $(LOCAL_PATH)/overlay-qaasa/packages/apps/Snap \
     $(LOCAL_PATH)/overlay-system
 
 # Permissions
@@ -402,7 +406,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.qcom.post_boot.sh \
     init.qcom.sh \
-    init.qcom.usb.sh
+    init.qcom.usb.sh \
+    init.device.rc
 
 PRODUCT_PACKAGES += \
     fstab.qcom \
@@ -448,6 +453,10 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl \
     android.hardware.thermal@1.0-service \
     thermal.sdm660
+
+# Thermal configs
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
 
 # Trust HAL
 PRODUCT_PACKAGES += \
