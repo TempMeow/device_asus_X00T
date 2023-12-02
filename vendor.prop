@@ -120,6 +120,7 @@ debug.sf.hw=1
 persist.hwc.mdpcomp.enable=true
 ro.opengles.version=196610
 vendor.display.disable_rotator_downscale=1
+vendor.display.perf_hint_window=50
 
 # DRM
 drm.service.enabled=true
@@ -151,6 +152,7 @@ persist.backup.ntpServer=0.pool.ntp.org
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
+ro.vendor.perf.scroll_opt=true
 vendor.perf.gestureflingboost.enable=true
 
 # Radio
