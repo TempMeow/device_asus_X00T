@@ -79,22 +79,8 @@ void NFC_check()
         property_override("ro.hq.support.nfc", "0");
 }
 
-static void set_build_fingerprint(const char *fingerprint){
-    property_override("ro.bootimage.build.fingerprint", fingerprint);
-    property_override("ro.system.build.fingerprint", fingerprint);
-    property_override("ro.build.fingerprint", fingerprint);
-    property_override("ro.vendor.build.fingerprint", fingerprint);
-}
-
-static void set_build_description(const char *description){
-    property_override("ro.build.description", description);
-}
-
 void vendor_load_properties()
 {
     set_avoid_gfxaccel_config();
     NFC_check();
-
-    set_build_fingerprint("google/redfin/redfin:14/UP1A.231105.001/10817346:user/release-keys");
-    set_build_description("redfin-user 13 UP1A.231105.001 10817346 release-keys");
 }
