@@ -38,7 +38,6 @@ import com.asus.zenparts.preferences.CustomSeekBarPreference;
 import com.asus.zenparts.preferences.SecureSettingListPreference;
 import com.asus.zenparts.preferences.SecureSettingSwitchPreference;
 import com.asus.zenparts.preferences.VibratorStrengthPreference;
-import com.asus.zenparts.preferences.NotificationLedSeekBarPreference;
 
 import com.asus.zenparts.SuShell;
 import com.asus.zenparts.SuTask;
@@ -89,12 +88,6 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String PREF_MSM_TOUCHBOOST = "touchboost";
     public static final String MSM_TOUCHBOOST_PATH = "/sys/module/msm_performance/parameters/touchboost";
 
-    public static final String CATEGORY_NOTIF = "notification_led";
-    public static final String PREF_NOTIF_LED = "notification_led_brightness";
-    public static final String NOTIF_LED_BLUE_PATH = "/sys/class/leds/blue/max_brightness";
-    public static final String NOTIF_LED_RED_PATH = "/sys/class/leds/red/max_brightness";
-    public static final String NOTIF_LED_GREEN_PATH = "/sys/class/leds/green/max_brightness";
-
     private static final String SELINUX_CATEGORY = "selinux";
     private static final String PREF_SELINUX_MODE = "selinux_mode";
     private static final String PREF_SELINUX_PERSISTENCE = "selinux_persistence";
@@ -128,13 +121,6 @@ public class DeviceSettings extends PreferenceFragment implements
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
 
         String device = FileUtils.getStringProp("ro.build.product", "unknown");
-
-        if (FileUtils.fileWritable(NOTIF_LED_BLUE_PATH) && FileUtils.fileWritable(NOTIF_LED_RED_PATH) && FileUtils.fileWritable(NOTIF_LED_GREEN_PATH)) {
-            NotificationLedSeekBarPreference notifLedBrightness =
-                    (NotificationLedSeekBarPreference) findPreference(PREF_NOTIF_LED);
-            notifLedBrightness.setOnPreferenceChangeListener(this);
-        } else { getPreferenceScreen().removePreference(findPreference(CATEGORY_NOTIF)); }
-
 
         mTorchBrightness = (CustomSeekBarPreference) findPreference(PREF_TORCH_BRIGHTNESS);
         mTorchBrightness.setEnabled(FileUtils.fileWritable(TORCH_1_BRIGHTNESS_PATH) &&
@@ -340,12 +326,6 @@ public class DeviceSettings extends PreferenceFragment implements
                 mCPUBOOST.setValue((String) value);
                 mCPUBOOST.setSummary(mCPUBOOST.getEntry());
                 FileUtils.setStringProp(CPUBOOST_SYSTEM_PROPERTY, (String) value);
-                break;
-
-            case PREF_NOTIF_LED:
-                FileUtils.setValue(NOTIF_LED_BLUE_PATH, (int) value);
-                FileUtils.setValue(NOTIF_LED_RED_PATH, (int) value);
-                FileUtils.setValue(NOTIF_LED_GREEN_PATH, (int) value);
                 break;
 
             case PREF_SELINUX_MODE:
