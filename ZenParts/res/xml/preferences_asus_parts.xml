@@ -172,10 +172,9 @@
             android:key="notification_led_brightness"
             android:title="@string/notification_led_title"
             android:icon="@drawable/ic_led"
-            android:max="100"
+            android:max="255"
             app:min="1"
-            app:units="%"
-            android:defaultValue="100" />
+            android:defaultValue="64" />
 
     </PreferenceCategory>
 
