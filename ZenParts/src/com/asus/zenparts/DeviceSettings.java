@@ -43,8 +43,6 @@ import com.asus.zenparts.preferences.NotificationLedSeekBarPreference;
 import com.asus.zenparts.SuShell;
 import com.asus.zenparts.SuTask;
 
-import java.lang.Math.*;
-
 public class DeviceSettings extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
@@ -348,9 +346,9 @@ public class DeviceSettings extends PreferenceFragment implements
                 break;
 
             case PREF_NOTIF_LED:
-                FileUtils.setValue(NOTIF_LED_BLUE_PATH, (1 + Math.pow(1.05694, (int) value )));
-                FileUtils.setValue(NOTIF_LED_RED_PATH, (1 + Math.pow(1.05694, (int) value )));
-                FileUtils.setValue(NOTIF_LED_GREEN_PATH, (1 + Math.pow(1.05694, (int) value )));
+                FileUtils.setValue(NOTIF_LED_BLUE_PATH, (int) value / 100.0 * (MAX_LED - MIN_LED) + MIN_LED);
+                FileUtils.setValue(NOTIF_LED_RED_PATH, (int) value / 100.0 * (MAX_LED - MIN_LED) + MIN_LED);
+                FileUtils.setValue(NOTIF_LED_GREEN_PATH, (int) value / 100.0 * (MAX_LED - MIN_LED) + MIN_LED);
                 break;
 
             case PREF_SELINUX_MODE:
