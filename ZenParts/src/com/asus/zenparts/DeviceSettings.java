@@ -85,10 +85,6 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String PREF_CPUBOOST = "cpuboost";
     public static final String CPUBOOST_SYSTEM_PROPERTY = "persist.zenparts.cpu_profile";
 
-    public static final String CATEGORY_TOUCHBOOST = "msm_touchboost";
-    public static final String PREF_MSM_TOUCHBOOST = "touchboost";
-    public static final String MSM_TOUCHBOOST_PATH = "/sys/module/msm_performance/parameters/touchboost";
-
     private static final String SELINUX_CATEGORY = "selinux";
     private static final String PREF_SELINUX_MODE = "selinux_mode";
     private static final String PREF_SELINUX_PERSISTENCE = "selinux_persistence";
@@ -109,7 +105,6 @@ public class DeviceSettings extends PreferenceFragment implements
     private SecureSettingListPreference mGPUBOOST;
     private SecureSettingListPreference mCPUBOOST;
     private SecureSettingSwitchPreference mBacklightDimmer;
-    private SecureSettingSwitchPreference mTouchboost;
     private SwitchPreference mSelinuxMode;
     private SwitchPreference mSelinuxPersistence;
 
@@ -175,14 +170,6 @@ public class DeviceSettings extends PreferenceFragment implements
         mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
         if (mVibratorStrength != null) {
             mVibratorStrength.setEnabled(VibratorStrengthPreference.isSupported());
-        }
-
-        if (FileUtils.fileWritable(MSM_TOUCHBOOST_PATH)) {
-            mTouchboost = (SecureSettingSwitchPreference) findPreference(PREF_MSM_TOUCHBOOST);
-            mTouchboost.setChecked(FileUtils.getFileValueAsBoolean(MSM_TOUCHBOOST_PATH, true));
-            mTouchboost.setOnPreferenceChangeListener(this);
-        } else {
-            getPreferenceScreen().removePreference(findPreference(CATEGORY_TOUCHBOOST));
         }
 
         boolean enhancerEnabled;

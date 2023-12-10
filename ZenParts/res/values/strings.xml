@@ -236,10 +236,6 @@
     <string name="cpuboost_low">Low</string>
     <string name="cpuboost_disable">Disable</string>
 
-    <!-- Touchboost -->
-    <string name="touchboost_title">Enable/Disable touchboost</string>
-    <string name="touchboost_summary">Boosts CPU when touch detected for smooth experience</string>
-
     <!-- Selinux Switch -->
     <string name="selinux_category">SELinux</string>
     <string name="selinux_explanation_summary">SELinux is a set of kernel modifications and user-space tools. Changing modes can cause unwanted effects. Use at your own risk.</string>
