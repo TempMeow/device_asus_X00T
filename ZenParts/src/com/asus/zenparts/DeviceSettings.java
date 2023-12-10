@@ -32,7 +32,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.asus.zenparts.speaker.ClearSpeakerActivity;
 import com.asus.zenparts.kcal.KCalSettingsActivity;
 import com.asus.zenparts.ambient.AmbientGesturePreferenceActivity;
 import com.asus.zenparts.preferences.CustomSeekBarPreference;
@@ -105,13 +104,10 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String PREF_SELINUX_MODE = "selinux_mode";
     private static final String PREF_SELINUX_PERSISTENCE = "selinux_persistence";
 
-    private static final String PREF_CLEAR_SPEAKER = "clear_speaker_settings";
-
     private CustomSeekBarPreference mTorchBrightness;
     private VibratorStrengthPreference mVibratorStrength;
     private NotificationLedSeekBarPreference mLEDBrightness;
     private Preference mKcal;
-    private Preference mClearSpeakerPref;
     private SecureSettingListPreference mSPECTRUM;
     private Preference mAmbientPref;
     private SecureSettingSwitchPreference mEnableDirac;
@@ -168,13 +164,6 @@ public class DeviceSettings extends PreferenceFragment implements
                 startActivity(intent);
                 return true;
             }
-        });
-
-        mClearSpeakerPref = (Preference) findPreference(PREF_CLEAR_SPEAKER);
-        mClearSpeakerPref.setOnPreferenceClickListener(preference -> {
-            Intent intent = new Intent(getActivity().getApplicationContext(), ClearSpeakerActivity.class);
-            startActivity(intent);
-            return true;
         });
 
         mSPECTRUM = (SecureSettingListPreference) findPreference(PREF_SPECTRUM);
