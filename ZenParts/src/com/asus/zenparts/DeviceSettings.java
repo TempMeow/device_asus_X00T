@@ -79,12 +79,6 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String USB_FASTCHARGE_PATH = "/sys/kernel/fast_charge/force_fast_charge";
     public static final String PREF_KEY_FPS_INFO = "fps_info";
 
-    public static final String PREF_GPUBOOST = "gpuboost";
-    public static final String GPUBOOST_SYSTEM_PROPERTY = "persist.zenparts.gpu_profile";
-
-    public static final String PREF_CPUBOOST = "cpuboost";
-    public static final String CPUBOOST_SYSTEM_PROPERTY = "persist.zenparts.cpu_profile";
-
     private static final String SELINUX_CATEGORY = "selinux";
     private static final String PREF_SELINUX_MODE = "selinux_mode";
     private static final String PREF_SELINUX_PERSISTENCE = "selinux_persistence";
@@ -102,8 +96,6 @@ public class DeviceSettings extends PreferenceFragment implements
     private CustomSeekBarPreference mEarpieceGain;
     private CustomSeekBarPreference mSpeakerGain;
     private SecureSettingSwitchPreference mFastcharge;
-    private SecureSettingListPreference mGPUBOOST;
-    private SecureSettingListPreference mCPUBOOST;
     private SecureSettingSwitchPreference mBacklightDimmer;
     private SwitchPreference mSelinuxMode;
     private SwitchPreference mSelinuxPersistence;
@@ -147,16 +139,6 @@ public class DeviceSettings extends PreferenceFragment implements
         mSPECTRUM.setValue(FileUtils.getStringProp(SPECTRUM_SYSTEM_PROPERTY, "0"));
         mSPECTRUM.setSummary(mSPECTRUM.getEntry());
         mSPECTRUM.setOnPreferenceChangeListener(this);
-
-        mGPUBOOST = (SecureSettingListPreference) findPreference(PREF_GPUBOOST);
-        mGPUBOOST.setValue(FileUtils.getStringProp(GPUBOOST_SYSTEM_PROPERTY, "0"));
-        mGPUBOOST.setSummary(mGPUBOOST.getEntry());
-        mGPUBOOST.setOnPreferenceChangeListener(this);
-
-        mCPUBOOST = (SecureSettingListPreference) findPreference(PREF_CPUBOOST);
-        mCPUBOOST.setValue(FileUtils.getStringProp(CPUBOOST_SYSTEM_PROPERTY, "0"));
-        mCPUBOOST.setSummary(mCPUBOOST.getEntry());
-        mCPUBOOST.setOnPreferenceChangeListener(this);
 
         if (FileUtils.fileWritable(BACKLIGHT_DIMMER_PATH)) {
             mBacklightDimmer = (SecureSettingSwitchPreference) findPreference(PREF_BACKLIGHT_DIMMER);
@@ -301,18 +283,6 @@ public class DeviceSettings extends PreferenceFragment implements
                 } else {
                     this.getContext().stopService(fpsinfo);
                 }
-                break;
-
-            case PREF_GPUBOOST:
-                mGPUBOOST.setValue((String) value);
-                mGPUBOOST.setSummary(mGPUBOOST.getEntry());
-                FileUtils.setStringProp(GPUBOOST_SYSTEM_PROPERTY, (String) value);
-                break;
-
-            case PREF_CPUBOOST:
-                mCPUBOOST.setValue((String) value);
-                mCPUBOOST.setSummary(mCPUBOOST.getEntry());
-                FileUtils.setStringProp(CPUBOOST_SYSTEM_PROPERTY, (String) value);
                 break;
 
             case PREF_SELINUX_MODE:
