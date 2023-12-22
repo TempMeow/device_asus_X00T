@@ -6,3 +6,6 @@ allow system_app sysfs_zram:file r_file_perms;
 
 # FPS Info Overlay
 allow system_app sysfs_fps:file { open read getattr write };
+
+# Speaker gain
+allow system_app sysfs_sgain:file { open read getattr write };
