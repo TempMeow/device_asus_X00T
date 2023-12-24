@@ -8,6 +8,3 @@ type sysfs_fps, sysfs_type, fs_type;
 
 # Microphone gain
 type sysfs_micgain, sysfs_type, fs_type;
-
-# Speaker gain
-type sysfs_sgain, sysfs_type, fs_type;
