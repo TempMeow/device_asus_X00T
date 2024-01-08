@@ -482,4 +482,7 @@
     <string name="config_gpu_clock_path">/sys/kernel/gpu/gpu_clock</string>
     <string name="config_gpu_busy_path">/sys/kernel/gpu/gpu_busy</string>
 
+    <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
+    <bool name="config_intrusiveNotificationLed">true</bool>
+
 </resources>
