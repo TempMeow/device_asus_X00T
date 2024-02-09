@@ -14,7 +14,7 @@ $(call inherit-product, vendor/rr/config/common_full_phone.mk)
 TARGET_FACE_UNLOCK_SUPPORTED := true
 RR_BUILDTYPE := Oppenheimer
 BUILD_RR_WALLPAPERS := true
-TARGET_BOOT_ANIMATION_RES := 720
+TARGET_BOOT_ANIMATION_RES := 1080
 
 # Inherit from X00T device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
