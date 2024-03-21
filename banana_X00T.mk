@@ -10,19 +10,19 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit some common InexDroid stuff
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+$(call inherit-product, vendor/banana/config/common.mk)
 
-# InexDroid official flags
-CUSTOM_BUILD_TYPE := OFFICIAL
+BANANA_BUILD_TYPE := UNOFFICIAL
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_FACE_UNLOCK_SUPPORTED := true
-INEXDROID_MAINTAINER := fakedotkit
+BANANA_MAINTAINER := fakedotkit
+WITH_GAPPS := false
 
 # Inherit from X00T device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := aosp_X00T
+PRODUCT_NAME := banana_X00T
 PRODUCT_DEVICE := X00T
 PRODUCT_BRAND := asus
 PRODUCT_MODEL := Zenfone Max Pro M1
