@@ -14,7 +14,7 @@ $(call inherit-product, vendor/arrow/config/common.mk)
 
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_FACE_UNLOCK_SUPPORTED := true
-DEVICE_MAINTAINER := queen
+DEVICE_MAINTAINER := ∂σткιт#𝙀𝙒
 DEVICE_MAINTAINER_LINK := https://t.me/queenserenade
 TARGET_SUPPORTS_QUICK_TAP := false
 
