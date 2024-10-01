@@ -5,6 +5,9 @@ rm -rf kernel/asus/sdm660/KernelSU/website
 rm -rf kernel/asus/sdm660/KernelSU/scripts
 rm -rf kernel/asus/sdm660/KernelSU/docs
 
+rm -rf device/asus/X00T
+git clone --depth=1 https://github.com/Tiktodz/device_asus_X00T device/asus/X00T
+
 rm -rf hardware/qcom-caf/msm8998/audio
 git clone --depth=1 https://github.com/inexdroid/hardware_qcom-caf_msm8998_audio hardware/qcom-caf/msm8998/audio
 
