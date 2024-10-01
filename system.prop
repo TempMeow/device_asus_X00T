@@ -48,6 +48,11 @@ ro.qcom.adreno.qgl.ShaderStorageImageExtendedFormats=0
 # GPS
 persist.vendor.overlay.izat.optin=rro
 
+# Hardware Description
+ro.device.chipset=Qualcomm Snapdragon 636
+ro.device.display_resolution=5.99" IPS LCD 1080x2160
+ro.device.colorbody_phone=Deepsea Black
+
 # HWUI
 ro.hwui.texture_cache_size=72
 ro.hwui.layer_cache_size=48
