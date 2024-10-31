@@ -60,9 +60,6 @@ TARGET_USES_ION := true
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
 
-# Encryption
-TARGET_HW_DISK_ENCRYPTION := true
-
 # EXFAT
 TARGET_EXFAT_DRIVER := exfat
 

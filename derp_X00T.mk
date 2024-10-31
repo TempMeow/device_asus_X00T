@@ -10,19 +10,17 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit some common ArrowOS stuff
-$(call inherit-product, vendor/arrow/config/common.mk)
+$(call inherit-product, vendor/derp/config/common_full_phone.mk)
 
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_FACE_UNLOCK_SUPPORTED := true
-DEVICE_MAINTAINER := ∂σткιт#𝙀𝙒
-DEVICE_MAINTAINER_LINK := https://t.me/queenserenade
-TARGET_SUPPORTS_QUICK_TAP := false
+USE_LEGACY_BOOTANIMATION := true
 
 # Inherit from X00T device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := arrow_X00T
+PRODUCT_NAME := derp_X00T
 PRODUCT_DEVICE := X00T
 PRODUCT_BRAND := asus
 PRODUCT_MODEL := Zenfone Max Pro M1
