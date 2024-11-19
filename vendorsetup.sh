@@ -14,7 +14,7 @@ rm -rf hardware/qcom-caf/msm8998/media
 git clone --depth=1 https://github.com/inexdroid/hardware_qcom-caf_msm8998_media hardware/qcom-caf/msm8998/media
 
 rm -rf vendor/lineage-priv/keys
-git clone https://github.com/sotodrom/keys -b evos vendor/lineage-priv/keys
+git clone https://github.com/sotodrom/keys vendor/lineage-priv/keys
 
 rm -rf vendor/asus
 git clone --depth=1 https://github.com/Tiktodz/vendor_asus vendor/asus
