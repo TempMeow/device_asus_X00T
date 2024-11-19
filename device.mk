@@ -4,7 +4,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
--include vendor/lineage-priv/keys.mk
+# Allow vendor/extra to override any property by setting it first
+$(call inherit-product-if-exists, vendor/extra/product.mk)
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2160
@@ -286,12 +287,12 @@ PRODUCT_PACKAGES += \
 
 # Signing
 ifneq (eng,$(TARGET_BUILD_VARIANT))
-ifneq (,$(wildcard vendor/extra/keys/releasekey.pk8))
-PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/extra/keys/releasekey
+ifneq (,$(wildcard vendor/lineage-priv/keys/releasekey.pk8))
+PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/lineage-priv/keys/releasekey
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.oem_unlock_supported=1
 endif
-ifneq (,$(wildcard vendor/extra/keys/otakey.x509.pem))
-PRODUCT_OTA_PUBLIC_KEYS := vendor/extra/keys/otakey.x509.pem
+ifneq (,$(wildcard vendor/lineage-priv/keys/otakey.x509.pem))
+PRODUCT_OTA_PUBLIC_KEYS := vendor/lineage-priv/keys/otakey.x509.pem
 endif
 endif
 
@@ -505,9 +506,9 @@ PRODUCT_PACKAGES += \
     libwifi-hal-ctrl \
     libwpa_client \
     WifiOverlay \
+    wpa_cli \
     wpa_supplicant \
-    wpa_supplicant.conf \
-    wpa_cli
+    wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
@@ -522,6 +523,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+-include vendor/lineage-priv/keys/keys.mk
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/asus/X00T/X00T-vendor.mk)
